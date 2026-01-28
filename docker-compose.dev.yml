@@ -3,9 +3,8 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile-Dev
-    command: ["npm", "run", "client:dev"]
-    depends_on:
-      - server
+    working_dir: /usr/src/habitica/website/client
+    command: ["npx", "vite", "--host", "0.0.0.0", "--port", "8080"]
     environment:
       - BASE_URL=http://server:3000
     networks:
